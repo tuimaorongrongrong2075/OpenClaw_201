@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSS订阅列表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .stats {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .feeds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feed-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-left: 4px solid #667eea;
+        }
+
+        .feed-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-left-color: #764ba2;
+        }
+
+        .feed-number {
+            font-size: 0.9em;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .feed-url {
+            font-size: 1.1em;
+            color: #333;
+            word-break: break-all;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .feed-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-visit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+        }
+
+        .btn-visit:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transform: scale(1.05);
+        }
+
+        .btn-copy {
+            background: #f5f5f5;
+            color: #333;
+            border: 2px solid #ddd;
+        }
+
+        .btn-copy:hover {
+            background: #e0e0e0;
+            border-color: #bbb;
+        }
+
+        .categories {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .category-title {
+            font-size: 1.5em;
+            color: #764ba2;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .category-tag {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            color: #555;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .feeds-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📰 RSS订阅列表</h1>
+        <p class="subtitle">从HN Popular Blogs 2025提取的订阅源</p>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">41</div>
+                <div class="stat-label">RSS订阅</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">覆盖范围</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">✅</div>
+                <div class="stat-label">已提取</div>
+            </div>
+        </div>
+
+        <div class="categories">
+            <div class="category-title">📂 主要类别</div>
+            <div class="category-list">
+                <span class="category-tag">🔧 技术博客</span>
+                <span class="category-tag">🚀 AI/机器学习</span>
+                <span class="category-tag">💻 编程开发</span>
+                <span class="category-tag">🔒 安全研究</span>
+                <span class="category-tag">📊 数据科学</span>
+                <span class="category-tag">🎨 软件工程</span>
+            </div>
+        </div>
+
+        <div class="feeds-grid">
+            <div class="feed-card">
+                <div class="feed-number">#1</div>
+                <div class="feed-url">simonwillison.net</div>
+                <div class="feed-url" style="font-size: 0.9em; color: #666;">https://simonwillison.net/atom/everything/</div>
+                <div class="feed-actions">
+                    <a href="https://simonwillison.net/atom/everything/" target="_blank" class="btn btn-visit">访问</a>
+                </div>
+            </div>
+
+            <div class="feed-card">
+                <div class="feed-number">#2</div>
+                <div class="feed-url">jeffgeerling.com</div>
+                <div class="feed-url" style="font-size: 0.9em; color: #666;">https://www.jeffgeerling.com/blog.xml</div>
+                <div class="feed-actions">
+                    <a href="https://www.jeffgeerling.com/blog.xml" target="_blank" class="btn btn-visit">访问</a>
+                </div>
+            </div>
+
+            <div class="feed-card">
+                <div class="feed-number">#3</div>
+                <div class="feed-url">seangoedecke.com</div>
+                <div class="feed-url" style="font-size: 0.9em; color: #666;">https://www.seangoedecke.com/rss.xml</div>
+                <div class="feed-actions">
+                    <a href="https://www.seangoedecke.com/rss.xml" target="_blank" class="btn btn-visit">访问</a>
+                </div>
+            </div>
+
+            <div class="feed-card">
+                <div class="feed-number">#4</div>
+                <div class="feed-url">KrebsOnSecurity</div>
+                <div class="feed-url" style="font-size: 0.9em; color: #666;">https://krebsonsecurity.com/feed/</div>
+                <div class="feed-actions">
+                    <a href="https://krebsonsecurity.com/feed/" target="_blank" class="btn btn-visit">访问</a>
+                </div>
+            </div>
+
+            <div class="feed-card">
+                <div class="feed-number">#5</div>
+                <div class="feed-url">daringfireball.net</div>
+                <div class="feed-url" style="font-size: 0.9em; color: #666;">https://daringfireball.net/feeds/main</div>
+                <div class="feed-actions">
+                    <a href="https://daringfireball.net/feeds/main" target="_blank" class="btn btn-visit">访问</a>
+                </div>
+            </div>
+
+            <div class="feed-card">
+                <div class="feed-number">#6</div>
+                <div class="feed-url">ericmigi.com</div>
+                <div class="feed-url" style="font-size: 0.9em; color: #666;">https://ericmigi.com/rss.xml</div>
+                <div class="feed-actions">
+                    <a href="https://ericmigi.com/rss.xml" target="_blank" class="btn btn-visit">访问</a>
+                </div>
+            </div>
+
+            <div class="feed-card">
+                <div class="feed-number">#7</div>
+                <div class="feed-url">pluralistic.net</div>
+                <div class="feed-url" style="font-size: 0.9em; color: #666;">https://pluralistic.net/feed/</div>
+                <div class="feed-actions">
+                    <a href="https://pluralistic.net/feed/" target="_blank" class="btn btn-visit">访问</a>
+                </div>
+            </div>
+
+            <div class="feed-card">
+                <div class="feed-number">#8</div>
+                <div class="feed-url">Substack Blogs</div>
+                <div class="feed-url" style="font-size: 0.9em; color: #666;">lcantuf.substack.com/feed</div>
+                <div class="feed-actions">
+                    <a href="https://lcantuf.substack.com/feed" target="_blank" class="btn btn-visit">访问</a>
+                </div>
+            </div>
+
+            <div class="feed-card">
+                <div class="feed-number">#9</div>
+                <div class="feed-url">danielwirtz.com</div>
+                <div class="feed-url" style="font-size: 0.9em; color: #666;">https://danielwirtz.com/rss.xml</div>
+                <div class="feed-actions">
+                    <a href="https://danielwirtz.com/rss.xml" target="_blank" class="btn btn-visit">访问</a>
+                </div>
+            </div>
+
+            <div class="feed-card">
+                <div class="feed-number">#10</div>
+                <div class="feed-url">Refactoring English</div>
+                <div class="feed-url" style="font-size: 0.9em; color: #666;">https://refactoringenglish.com/index.xml</div>
+                <div class="feed-actions">
+                    <a href="https://refactoringenglish.com/index.xml" target="_blank" class="btn btn-visit">访问</a>
+                </div>
+            </div>
+
+            <div class="feed-card" style="grid-column: 1 / -1; background: linear-gradient(135deg, #f5f7fa 0%, #e0e0e0 100%); border-left: 4px solid #999;">
+                <div class="feed-number">...</div>
+                <div class="feed-url" style="text-align: center; padding: 20px 0;">
+                    还有 31 个订阅<br>
+                    <span style="font-size: 0.9em; color: #666;">完整列表已保存到 feeds_list.txt</span>
+                </div>
+                <div class="feed-actions" style="justify-content: center;">
+                    <a href="https://gist.githubusercontent.com/emschwartz/e6d2bf860ccc367fe37ff953ba6de66b/raw/426957f043dc0054f95aae6c19de1d0b4ecc2bb2/hn-popular-blogs-2025.opml" target="_blank" class="btn btn-visit" class="btn-copy">查看完整列表</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🦧 小猩为姐姐制作 | 2026-02-03</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">
+                📚 数据来源：<a href="https://gist.github.com/emschwartz" target="_blank" style="color: #fff;">emschwartz</a><br>
+                🔗 完整OPML文件：<a href="https://gist.githubusercontent.com/emschwartz/e6d2bf860ccc367fe37ff953ba6de66b/raw/426957f043dc0054f95aae6c19de1d0b4ecc2bb2/hn-popular-blogs-2025.opml" target="_blank" style="color: #fff;">GitHub Gist</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

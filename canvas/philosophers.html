@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哲学家画廊</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .card-header.hegel {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .card-header.wittgenstein {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .card-header.wangyangming {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .emoji {
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+
+        .name {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .name-cn {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .info {
+            margin-bottom: 15px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .value {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .years {
+            background: #f5f5f5;
+            padding: 8px 12px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .contributions {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+
+        .contributions h4 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .contributions ul {
+            list-style: none;
+        }
+
+        .contributions li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .contributions li:before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #764ba2;
+            font-weight: bold;
+        }
+
+        .quote {
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            font-style: italic;
+            color: #555;
+            text-align: center;
+        }
+
+        .quote:before {
+            content: '"';
+            font-size: 2em;
+            color: #764ba2;
+            vertical-align: top;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 哲学家画廊</h1>
+        <p class="subtitle">三位思想巨匠，跨越时空的智慧对话</p>
+
+        <div class="cards">
+            <!-- 黑格尔 -->
+            <div class="card">
+                <div class="card-header hegel">
+                    <div class="emoji">🔮</div>
+                    <div class="name">Georg Hegel</div>
+                    <div class="name-cn">格奥尔格·黑格尔</div>
+                </div>
+                <div class="card-body">
+                    <div class="years">1770 - 1831</div>
+                    <div class="info">
+                        <div class="label">国籍</div>
+                        <div class="value">德国 🇩🇪</div>
+                    </div>
+                    <div class="info">
+                        <div class="label">身份</div>
+                        <div class="value">哲学家、大学教授</div>
+                    </div>
+                    <div class="contributions">
+                        <h4>核心贡献</h4>
+                        <ul>
+                            <li>辩证法：正题-反题-合题</li>
+                            <li>绝对精神：世界的自我认识</li>
+                            <li>历史哲学：人类历史朝向自由发展</li>
+                            <li>精神现象学、法哲学原理</li>
+                        </ul>
+                    </div>
+                    <div class="quote">
+                        "我看见世界精神在马背上"（看拿破仑时）
+                    </div>
+                </div>
+            </div>
+
+            <!-- 维特根斯坦 -->
+            <div class="card">
+                <div class="card-header wittgenstein">
+                    <div class="emoji">💎</div>
+                    <div class="name">Ludwig Wittgenstein</div>
+                    <div class="name-cn">路德维希·维特根斯坦</div>
+                </div>
+                <div class="card-body">
+                    <div class="years">1889 - 1951</div>
+                    <div class="info">
+                        <div class="label">国籍</div>
+                        <div class="value">奥地利 🇦🇹</div>
+                    </div>
+                    <div class="info">
+                        <div class="label">身份</div>
+                        <div class="value">哲学家、富二代、教师</div>
+                    </div>
+                    <div class="contributions">
+                        <h4>核心贡献</h4>
+                        <ul>
+                            <li>逻辑哲学论：早期哲学体系</li>
+                            <li>哲学研究：后期语言哲学</li>
+                            <li>语言游戏：意义在于使用</li>
+                            <li>对逻辑实证主义的批判</li>
+                        </ul>
+                    </div>
+                    <div class="quote">
+                        "告诉他们我度过了美好的一生"
+                    </div>
+                </div>
+            </div>
+
+            <!-- 王阳明 -->
+            <div class="card">
+                <div class="card-header wangyangming">
+                    <div class="emoji">🏯</div>
+                    <div class="name">Wang Yangming</div>
+                    <div class="name-cn">王守仁（阳明）</div>
+                </div>
+                <div class="card-body">
+                    <div class="years">1472 - 1529</div>
+                    <div class="info">
+                        <div class="label">国籍</div>
+                        <div class="value">中国明代 🇨🇳</div>
+                    </div>
+                    <div class="info">
+                        <div class="label">身份</div>
+                        <div class="value">哲学家、军事家、教育家</div>
+                    </div>
+                    <div class="contributions">
+                        <h4>核心贡献</h4>
+                        <ul>
+                            <li>心学：心即理，致良知</li>
+                            <li>知行合一：知行本是一体</li>
+                            <li>龙场悟道：开创心学体系</li>
+                            <li>平定叛乱：文武双全</li>
+                        </ul>
+                    </div>
+                    <div class="quote">
+                        "此心光明，亦复何言"
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🦧 小猩为姐姐制作 | 2026-02-03</p>
+        </div>
+    </div>
+</body>
+</html>
