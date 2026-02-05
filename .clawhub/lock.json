@@ -4,6 +4,10 @@
     "agent-browser": {
       "version": "0.2.0",
       "installedAt": 1770188576250
+    },
+    "obsidian": {
+      "version": "1.0.0",
+      "installedAt": 1770315039197
     }
   }
 }
