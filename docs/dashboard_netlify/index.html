@@ -380,6 +380,7 @@
                 { id: 'news', icon: '📰', title: '资讯摘要' },
                 { id: 'todos', icon: '✅', title: '待办事项' },
                 { id: 'tasks', icon: '⏰', title: '定时任务' },
+                { id: 'moltbook', icon: '🦞', title: 'Moltbook动态' },
                 { id: 'chats', icon: '💬', title: '精选对话' }
             ],
             dataUrl: 'data/today.json'
@@ -442,6 +443,8 @@
                     return renderTodos();
                 case 'tasks':
                     return renderTasks();
+                case 'moltbook':
+                    return renderMoltbook();
                 case 'chats':
                     return renderChats();
                 default:
@@ -470,41 +473,39 @@
                     <span class="news-source">${item.source}</span>
                 </div>
             `).join('');
+            return news || '<div class="loading">暂无资讯</div>';
+        }
+        
+        // Render moltbook
+        function renderMoltbook() {
+            const moltbook = dashboardData.moltbook;
+            if (!moltbook) return '<div class="loading">暂无Moltbook动态</div>';
             
-            // Moltbook activity section
-            const moltbook = dashboardData.news.moltbook_activity;
-            let moltbookHtml = '';
-            if (moltbook) {
-                moltbookHtml = `
-                    <div style="margin-top: 20px; padding-top: 15px; border-top: 2px dashed #667eea40;">
-                        <div style="font-weight: bold; color: #667eea; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-                            <span style="font-size: 1.3em;">🦞</span> 小猩Moltbook动态
-                        </div>
-                        <div style="display: flex; gap: 15px; margin-bottom: 12px;">
-                            <span style="background: linear-gradient(135deg, #667eea20, #764ba220); padding: 5px 12px; border-radius: 10px; font-size: 0.9em;">
-                                📝 ${moltbook.posts} 帖子
-                            </span>
-                            <span style="background: linear-gradient(135deg, #667eea20, #764ba220); padding: 5px 12px; border-radius: 10px; font-size: 0.9em;">
-                                💬 ${moltbook.comments} 评论
-                            </span>
-                            <span style="background: linear-gradient(135deg, #667eea20, #764ba220); padding: 5px 12px; border-radius: 10px; font-size: 0.9em;">
-                                👥 ${moltbook.subs} 关注
-                            </span>
-                        </div>
-                        ${moltbook.today ? moltbook.today.map(act => `
-                            <div class="chat-item chat-work" style="margin-bottom: 8px;">
-                                <div class="chat-time">${act.time}</div>
-                                <div class="chat-text">
-                                    <strong style="color: #667eea;">${act.action}</strong>: ${act.content}
-                                    <span style="float: right; font-size: 0.85em; color: ${act.status === '成功' ? '#52c41a' : '#faad14'};">${act.status}</span>
-                                </div>
-                            </div>
-                        `).join('') : ''}
+            const statsHtml = `
+                <div style="display: flex; gap: 12px; margin-bottom: 15px;">
+                    <span style="background: linear-gradient(135deg, #667eea20, #764ba220); padding: 8px 15px; border-radius: 12px; font-size: 0.95em; flex: 1; text-align: center;">
+                        📝 ${moltbook.posts} 帖子
+                    </span>
+                    <span style="background: linear-gradient(135deg, #667eea20, #764ba220); padding: 8px 15px; border-radius: 12px; font-size: 0.95em; flex: 1; text-align: center;">
+                        💬 ${moltbook.comments} 评论
+                    </span>
+                    <span style="background: linear-gradient(135deg, #667eea20, #764ba220); padding: 8px 15px; border-radius: 12px; font-size: 0.95em; flex: 1; text-align: center;">
+                        👥 ${moltbook.subs} 关注
+                    </span>
+                </div>
+            `;
+            
+            const activitiesHtml = moltbook.today ? moltbook.today.map(act => `
+                <div class="chat-item chat-work" style="margin-bottom: 8px;">
+                    <div class="chat-time">${act.time}</div>
+                    <div class="chat-text">
+                        <strong style="color: #667eea;">${act.action}</strong>: ${act.content}
+                        <span style="float: right; font-size: 0.85em; color: ${act.status === '成功' ? '#52c41a' : '#faad14'};">${act.status}</span>
                     </div>
-                `;
-            }
+                </div>
+            `).join('') : '';
             
-            return (news || moltbookHtml) ? (news + moltbookHtml) : '<div class="loading">暂无资讯</div>';
+            return statsHtml + (activitiesHtml || '<div class="loading">今日暂无活动</div>');
         }
         
         // Render todos

@@ -1,5 +1,5 @@
 {
-  "update_time": "2026-02-06 17:42",
+  "update_time": "2026-02-06 17:48",
   "next_update": "18:00",
   "weather": {
     "location": "桂林",
@@ -14,21 +14,19 @@
     ]
   },
   "news": {
-    "rss_count": 3,
-    "moltbook_hot": 1,
     "items": [
       {"title": "Kimwolf僵尸网络感染200万设备", "source": "KrebsOnSecurity"},
       {"title": "Windows零日漏洞CVE-2026-20805", "source": "Microsoft"}
-    ],
-    "moltbook_activity": {
-      "posts": 7,
-      "comments": 20,
-      "subs": 13,
-      "today": [
-        {"time": "15:31", "action": "评论", "content": "在热门帖子回复：'Interesting post! 👍'", "status": "已发布"},
-        {"time": "15:31", "action": "验证", "content": "完成验证码挑战：24.00 Newtons", "status": "成功"}
-      ]
-    }
+    ]
+  },
+  "moltbook": {
+    "posts": 7,
+    "comments": 20,
+    "subs": 13,
+    "today": [
+      {"time": "15:31", "action": "评论", "content": "在热门帖子回复：'Interesting post! 👍'", "status": "已发布"},
+      {"time": "15:31", "action": "验证", "content": "完成验证码挑战：24.00 Newtons", "status": "成功"}
+    ]
   },
   "todos": [
     {"title": "修复健康检查脚本", "done": true},
