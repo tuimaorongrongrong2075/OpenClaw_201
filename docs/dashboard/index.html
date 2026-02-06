@@ -59,6 +59,7 @@
         .sections {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto auto auto;
             gap: 20px;
             margin-bottom: 20px;
         }
@@ -327,13 +328,6 @@
             transform: scale(1.1);
         }
         
-        /* Full sections on large screens */
-        @media (min-width: 900px) {
-            .section.full-width {
-                grid-column: span 2;
-            }
-        }
-        
         /* Loading animation */
         .loading {
             text-align: center;
@@ -430,7 +424,7 @@
         function renderAllSections() {
             const container = document.getElementById('sections-container');
             container.innerHTML = CONFIG.sections.map((section, index) => `
-                <div class="section ${index === 0 ? 'full-width' : ''}" id="section-${index}">
+                <div class="section" id="section-${index}">
                     <h2><span class="icon">${section.icon}</span> ${section.title}</h2>
                     <div id="content-${index}">${renderSectionContent(section.id)}</div>
                 </div>
