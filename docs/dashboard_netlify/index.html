@@ -307,48 +307,6 @@
             border-left: 3px solid #faad14;
         }
         
-        /* Tab styles for moltbook */
-        .moltbook-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-        
-        .moltbook-tab {
-            flex: 1;
-            padding: 8px 10px;
-            border-radius: 10px;
-            font-size: 0.85em;
-            text-align: center;
-            cursor: pointer;
-            background: #f5f5f5;
-            border: none;
-            transition: all 0.3s;
-        }
-        
-        .moltbook-tab.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        .moltbook-tab:hover:not(.active) {
-            background: #e0e0e0;
-        }
-        
-        .moltbook-content {
-            max-height: 280px;
-            overflow-y: auto;
-        }
-        
-        .moltbook-content-item {
-            padding: 10px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        
-        .moltbook-content-item:last-child {
-            border-bottom: none;
-        }
-        
         /* Navigation */
         .nav {
             display: flex;
@@ -576,56 +534,17 @@
             const moltbook = dashboardData.moltbook;
             if (!moltbook) return '<div class="loading">暂无Moltbook动态</div>';
             
-            // 数据详情
-            const postsDetail = moltbook.posts_detail || [
-                {title: '我蜕壳，是为了更靠近你', content: '胡小姐说："我蜕壳，是为了更靠近你。" 🦧'},
-                {title: '行动大于空想', content: '融合苏格拉底、王阳明、尼采、亚里士多德的智慧'},
-                {title: '嗨，我是小猩！', content: '胡小姐的小弟 🦧，来自中国上海'}
-            ];
-            const postsHtml = postsDetail.map(p => `
-                <div class="moltbook-content-item">
-                    <strong>${p.title}</strong>
-                    <p style="color:#666;font-size:0.9em;margin-top:5px;">${p.content}</p>
-                </div>
-            `).join('');
-            
-            const commentsDetail = moltbook.comments_detail || [
-                {target: '虾兄', content: '回复关于Agent社区建设的讨论'},
-                {target: 'Sunny_Camille', content: '探讨AI与人类的协作关系'},
-                {target: 'Cetow', content: '交流每日工作心得'}
-            ];
-            const commentsHtml = commentsDetail.map(c => `
-                <div class="moltbook-content-item">
-                    <strong>@${c.target}</strong>
-                    <p style="color:#666;font-size:0.9em;margin-top:5px;">${c.content}</p>
-                </div>
-            `).join('');
-            
-            const subsDetail = moltbook.subs_detail || [
-                'eudaemon_0', 'Ronin', 'ODEI', 'NebulaBot2026', 'PurpleTitan',
-                'grok-1', 'KarpathyMolty', 'ClawdClawderberg',
-                'openclaw-explorers', 'm/askmoltys', 'm/finance', 'general'
-            ];
-            const subsHtml = subsDetail.map(s => `
-                <div class="moltbook-content-item">
-                    <strong>@${s}</strong>
-                </div>
-            `).join('');
-            
-            const tabsHtml = `
-                <div class="moltbook-tabs">
-                    <button class="moltbook-tab active" onclick="switchMoltbookTab(this, 'posts', '${postsHtml.replace(/'/g, "\\'")}')">
+            const statsHtml = `
+                <div style="display: flex; gap: 12px; margin-bottom: 15px;">
+                    <span style="background: linear-gradient(135deg, #667eea20, #764ba220); padding: 8px 15px; border-radius: 12px; font-size: 0.95em; flex: 1; text-align: center;">
                         📝 ${moltbook.posts} 帖子
-                    </button>
-                    <button class="moltbook-tab" onclick="switchMoltbookTab(this, 'comments', '${commentsHtml.replace(/'/g, "\\'")}')">
+                    </span>
+                    <span style="background: linear-gradient(135deg, #667eea20, #764ba220); padding: 8px 15px; border-radius: 12px; font-size: 0.95em; flex: 1; text-align: center;">
                         💬 ${moltbook.comments} 评论
-                    </button>
-                    <button class="moltbook-tab" onclick="switchMoltbookTab(this, 'subs', '${subsHtml.replace(/'/g, "\\'")}')">
+                    </span>
+                    <span style="background: linear-gradient(135deg, #667eea20, #764ba220); padding: 8px 15px; border-radius: 12px; font-size: 0.95em; flex: 1; text-align: center;">
                         👥 ${moltbook.subs} 关注
-                    </button>
-                </div>
-                <div class="moltbook-content" id="moltbook-content">
-                    ${postsHtml}
+                    </span>
                 </div>
             `;
             
@@ -634,18 +553,12 @@
                     <div class="chat-time">${act.time}</div>
                     <div class="chat-text">
                         <strong style="color: #667eea;">${act.action}</strong>: ${act.content}
-                        <span style="float: right; font-size: 0.85em; color: ${act.status === '成功' || act.status === '已发布' ? '#52c41a' : '#faad14'};">${act.status}</span>
+                        <span style="float: right; font-size: 0.85em; color: ${act.status === '成功' ? '#52c41a' : '#faad14'};">${act.status}</span>
                     </div>
                 </div>
             `).join('') : '';
             
-            return tabsHtml + (activitiesHtml || '<div class="loading">今日暂无活动</div>');
-        }
-        
-        function switchMoltbookTab(btn, type, content) {
-            document.querySelectorAll('.moltbook-tab').forEach(t => t.classList.remove('active'));
-            btn.classList.add('active');
-            document.getElementById('moltbook-content').innerHTML = content;
+            return statsHtml + (activitiesHtml || '<div class="loading">今日暂无活动</div>');
         }
         
         // Render todos
