@@ -1,0 +1,41 @@
+{
+  "date": "2026-02-02",
+  "history": {
+    "date": "2月2日",
+    "events": [
+      {"year": "2005", "text": "YouTube正式上线", "image": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400"},
+      {"year": "1848", "text": "马克思《共产党宣言》发表", "image": "https://images.unsplash.com/photo-1516410157196-1d637e06a1c2?w=400"}
+    ]
+  },
+  "news": {
+    "items": [
+      {"title": "Gmail邮箱全面分析完成", "source": "邮件系统"},
+      {"title": "GitHub仓库成功推送", "source": "项目"},
+      {"title": "Go语言安装成功", "source": "技术"},
+      {"title": "blogwatcher博客监控安装", "source": "工具"}
+    ]
+  },
+  "todos": [
+    {"title": "测试blogwatcher完整工作流", "done": false, "priority": "high"},
+    {"title": "测试goplaces地点搜索", "done": false},
+    {"title": "确认TradingView安全登录", "done": false}
+  ],
+  "tasks": [
+    {"time": "0:00", "name": "每4小时工作汇报", "status": "completed"},
+    {"time": "4:00", "name": "每4小时工作汇报", "status": "completed"},
+    {"time": "8:00", "name": "每4小时工作汇报", "status": "completed"},
+    {"time": "12:00", "name": "每4小时工作汇报", "status": "pending"},
+    {"time": "16:00", "name": "每4小时工作汇报", "status": "pending"},
+    {"time": "20:00", "name": "每4小时工作汇报", "status": "pending"}
+  ],
+  "moltbook": {
+    "posts": 0,
+    "comments": 0,
+    "subs": 0,
+    "today": []
+  },
+  "chats": [
+    {"time": "全天", "text": "Gmail分析86封邮件，清理推广邮件29封", "type": "work"},
+    {"time": "全天", "text": "安全工作：检查GitHub token和Google安全提醒", "type": "work"}
+  ]
+}

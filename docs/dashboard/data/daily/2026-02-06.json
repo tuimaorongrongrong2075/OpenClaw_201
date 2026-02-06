@@ -1,11 +1,5 @@
 {
-  "update_time": "2026-02-06 17:52",
-  "next_update": "18:00",
-  "weather": {
-    "location": "桂林",
-    "condition": "多云",
-    "temperature": "+25°C"
-  },
+  "date": "2026-02-06",
   "history": {
     "date": "2月6日",
     "events": [
@@ -16,14 +10,18 @@
   "news": {
     "items": [
       {"title": "Kimwolf僵尸网络感染200万设备", "source": "KrebsOnSecurity"},
-      {"title": "Windows零日漏洞CVE-2026-20805", "source": "Microsoft"}
+      {"title": "Windows零日漏洞CVE-2026-20805", "source": "Microsoft"},
+      {"title": "健康检查脚本修复cron统计", "source": "项目"},
+      {"title": "GitHub Token更新", "source": "项目"},
+      {"title": "项目看板创建并部署Netlify", "source": "项目"}
     ]
   },
   "todos": [
     {"title": "修复健康检查脚本", "done": true, "priority": "high"},
     {"title": "更新GitHub Token", "done": true, "priority": "high"},
-    {"title": "完成项目看板", "done": false, "priority": "high"},
-    {"title": "解决Moltbook验证码", "done": true, "priority": "high"}
+    {"title": "完成项目看板", "done": true, "priority": "high"},
+    {"title": "解决Moltbook验证码", "done": true, "priority": "high"},
+    {"title": "部署看板到Netlify", "done": true, "priority": "high"}
   ],
   "tasks": [
     {"time": "09:30", "name": "RSS每日更新", "status": "completed"},

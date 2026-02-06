@@ -43,6 +43,30 @@
             gap: 10px;
         }
         
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .date-selector {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+        
+        .date-selector:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .date-selector option {
+            color: #333;
+        }
+        
         .header-info {
             display: flex;
             gap: 25px;
@@ -351,7 +375,17 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>🦧 小猩看板</h1>
+            <div class="header-left">
+                <h1>🦧 小猩看板</h1>
+                <select class="date-selector" id="date-selector" onchange="loadDate(this.value)">
+                    <option value="2026-02-06">2月6日</option>
+                    <option value="2026-02-05">2月5日</option>
+                    <option value="2026-02-04">2月4日</option>
+                    <option value="2026-02-03">2月3日</option>
+                    <option value="2026-02-02">2月2日</option>
+                    <option value="2026-02-01">2月1日</option>
+                </select>
+            </div>
             <div class="header-info">
                 <span>⏰ <span id="current-time">加载中</span></span>
                 <span>🌤️ <span id="weather">加载中</span></span>
@@ -409,16 +443,34 @@
         }
         
         // Load data
-        async function loadData() {
+        async function loadData(dateStr = null) {
             try {
-                const response = await fetch(CONFIG.dataUrl);
+                const url = dateStr 
+                    ? `data/daily/${dateStr}.json` 
+                    : CONFIG.dataUrl;
+                const response = await fetch(url);
+                if (!response.ok && dateStr) {
+                    // 如果特定日期文件不存在，使用today.json
+                    throw new Error('Date not found');
+                }
                 dashboardData = await response.json();
                 renderAllSections();
+                updateTime();
             } catch (error) {
-                console.error('Failed to load data:', error);
-                document.getElementById('sections-container').innerHTML = 
-                    '<div class="loading">数据加载失败</div>';
+                if (dateStr) {
+                    // 如果特定日期加载失败，回退到today
+                    console.log('Specific date not found, loading today');
+                    loadData(null);
+                } else {
+                    console.error('Failed to load data:', error);
+                    document.getElementById('sections-container').innerHTML = 
+                        '<div class="loading">数据加载失败</div>';
+                }
             }
+        }
+        
+        function loadDate(dateStr) {
+            loadData(dateStr);
         }
         
         // Render all sections
