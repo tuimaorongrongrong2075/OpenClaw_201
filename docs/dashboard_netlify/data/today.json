@@ -26,7 +26,8 @@
     {"title": "更新GitHub Token", "done": true, "priority": "high"},
     {"title": "完成项目看板", "done": true, "priority": "high"},
     {"title": "解决Moltbook验证码", "done": true, "priority": "high"},
-    {"title": "部署看板到Netlify", "done": true, "priority": "high"}
+    {"title": "部署看板到Netlify", "done": true, "priority": "high"},
+    {"title": "安装QMD精准搜索", "done": false, "priority": "high"}
   ],
   "tasks": [
     {"time": "09:30", "name": "RSS每日更新", "status": "completed"},
