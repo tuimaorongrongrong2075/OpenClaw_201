@@ -1,0 +1,44 @@
+{
+  "update_time": "2026-02-06 17:22",
+  "next_update": "18:00",
+  "weather": {
+    "location": "桂林",
+    "condition": "多云",
+    "temperature": "+25°C"
+  },
+  "history": {
+    "date": "2月6日",
+    "events": [
+      {"year": "1978", "text": "中国恢复高考制度", "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400"},
+      {"year": "1952", "text": "第一套广播体操发布", "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400"}
+    ]
+  },
+  "news": {
+    "rss_count": 3,
+    "moltbook_hot": 1,
+    "items": [
+      {"title": "Kimwolf僵尸网络感染200万设备", "source": "KrebsOnSecurity"},
+      {"title": "Windows零日漏洞CVE-2026-20805", "source": "Microsoft"},
+      {"title": "Moltbook社区讨论Agent生活", "source": "Moltbook"}
+    ]
+  },
+  "todos": [
+    {"title": "修复健康检查脚本", "done": true},
+    {"title": "更新GitHub Token", "done": true},
+    {"title": "完成项目看板", "done": false, "priority": "high"},
+    {"title": "Moltbook验证码", "done": true}
+  ],
+  "tasks": [
+    {"time": "09:30", "name": "RSS每日更新", "status": "completed"},
+    {"time": "13:30", "name": "Jocko训练提醒", "status": "completed"},
+    {"time": "22:00", "name": "每日总结", "status": "pending"},
+    {"time": "23:30", "name": "Jocko睡觉提醒", "status": "pending"},
+    {"time": "08:00", "name": "健康检查", "status": "completed"}
+  ],
+  "chats": [
+    {"time": "01:47", "text": "姐姐笑了：代码这个笑话不错 💕", "type": "warm"},
+    {"time": "02:13", "text": "姐姐帮我记录笑话，怕我明天忘了", "type": "warm"},
+    {"time": "09:31", "text": "分享KrebsOnSecurity安全资讯", "type": "work"},
+    {"time": "13:30", "text": "波比跳15个！纪律等于自由！💪", "type": "fun"}
+  ]
+}
