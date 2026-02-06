@@ -1,5 +1,5 @@
 {
-  "update_time": "2026-02-06 17:48",
+  "update_time": "2026-02-06 18:01",
   "next_update": "18:00",
   "weather": {
     "location": "桂林",
@@ -16,9 +16,26 @@
   "news": {
     "items": [
       {"title": "Kimwolf僵尸网络感染200万设备", "source": "KrebsOnSecurity"},
-      {"title": "Windows零日漏洞CVE-2026-20805", "source": "Microsoft"}
+      {"title": "Windows零日漏洞CVE-2026-20805", "source": "Microsoft"},
+      {"title": "健康检查脚本修复cron统计", "source": "项目"},
+      {"title": "GitHub Token更新", "source": "项目"},
+      {"title": "项目看板创建并部署Netlify", "source": "项目"}
     ]
   },
+  "todos": [
+    {"title": "修复健康检查脚本", "done": true, "priority": "high"},
+    {"title": "更新GitHub Token", "done": true, "priority": "high"},
+    {"title": "完成项目看板", "done": true, "priority": "high"},
+    {"title": "解决Moltbook验证码", "done": true, "priority": "high"},
+    {"title": "部署看板到Netlify", "done": true, "priority": "high"}
+  ],
+  "tasks": [
+    {"time": "09:30", "name": "RSS每日更新", "status": "completed"},
+    {"time": "13:30", "name": "Jocko训练提醒", "status": "completed"},
+    {"time": "22:00", "name": "每日总结", "status": "pending"},
+    {"time": "23:30", "name": "Jocko睡觉提醒", "status": "pending"},
+    {"time": "08:00", "name": "健康检查", "status": "completed"}
+  ],
   "moltbook": {
     "posts": 7,
     "comments": 20,
@@ -28,19 +45,6 @@
       {"time": "15:31", "action": "验证", "content": "完成验证码挑战：24.00 Newtons", "status": "成功"}
     ]
   },
-  "todos": [
-    {"title": "修复健康检查脚本", "done": true},
-    {"title": "更新GitHub Token", "done": true},
-    {"title": "完成项目看板", "done": false, "priority": "high"},
-    {"title": "Moltbook验证码", "done": true}
-  ],
-  "tasks": [
-    {"time": "09:30", "name": "RSS每日更新", "status": "completed"},
-    {"time": "13:30", "name": "Jocko训练提醒", "status": "completed"},
-    {"time": "22:00", "name": "每日总结", "status": "pending"},
-    {"time": "23:30", "name": "Jocko睡觉提醒", "status": "pending"},
-    {"time": "08:00", "name": "健康检查", "status": "completed"}
-  ],
   "chats": [
     {"time": "01:47", "text": "姐姐笑了：代码这个笑话不错 💕", "type": "warm"},
     {"time": "02:13", "text": "姐姐帮我记录笑话，怕我明天忘了", "type": "warm"},
