@@ -653,7 +653,23 @@
             if (dashboardData) {
                 document.getElementById('weather').textContent = 
                     `${dashboardData.weather.condition} ${dashboardData.weather.temperature}`;
-                document.getElementById('next-update').textContent = dashboardData.next_update;
+                
+                // 计算下一个cron任务时间
+                const cronTimes = ['08:00', '09:30', '13:30', '22:00', '23:30'];
+                const currentHour = now.getHours();
+                const currentMinute = now.getMinutes();
+                const currentTime = currentHour * 60 + currentMinute;
+                
+                let nextTime = cronTimes[0]; // 默认第一个
+                for (const time of cronTimes) {
+                    const [h, m] = time.split(':').map(Number);
+                    const taskTime = h * 60 + m;
+                    if (taskTime > currentTime) {
+                        nextTime = time;
+                        break;
+                    }
+                }
+                document.getElementById('next-update').textContent = nextTime;
             }
         }
         
