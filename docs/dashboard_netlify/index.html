@@ -378,6 +378,7 @@
             <div class="header-left">
                 <h1>🦧 小猩看板</h1>
                 <select class="date-selector" id="date-selector" onchange="loadDate(this.value)">
+                    <option value="today">今天</option>
                     <option value="2026-02-06">2月6日</option>
                     <option value="2026-02-05">2月5日</option>
                     <option value="2026-02-04">2月4日</option>
@@ -444,23 +445,19 @@
         
         // Load data
         async function loadData(dateStr = null) {
+            const url = dateStr 
+                ? `data/daily/${dateStr}.json` 
+                : CONFIG.dataUrl;
+            
             try {
-                const url = dateStr 
-                    ? `data/daily/${dateStr}.json` 
-                    : CONFIG.dataUrl;
                 const response = await fetch(url);
-                if (!response.ok && dateStr) {
-                    // 如果特定日期文件不存在，使用today.json
-                    throw new Error('Date not found');
-                }
+                if (!response.ok) throw new Error('Failed to fetch');
                 dashboardData = await response.json();
                 renderAllSections();
                 updateTime();
             } catch (error) {
                 if (dateStr) {
-                    // 如果特定日期加载失败，回退到today
-                    console.log('Specific date not found, loading today');
-                    loadData(null);
+                    console.log(`Failed to load ${dateStr}, staying on current view`);
                 } else {
                     console.error('Failed to load data:', error);
                     document.getElementById('sections-container').innerHTML = 
@@ -470,7 +467,11 @@
         }
         
         function loadDate(dateStr) {
-            loadData(dateStr);
+            if (dateStr === 'today') {
+                loadData(null);
+            } else {
+                loadData(dateStr);
+            }
         }
         
         // Render all sections
