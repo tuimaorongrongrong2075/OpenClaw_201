@@ -52,4 +52,8 @@ else
     echo "✅ 评论成功！"
 fi
 
+# 同步看板数据
+echo "📊 同步看板数据..."
+bash /root/.openclaw/workspace/scripts/sync_dashboard.sh
+
 echo "🦞 Moltbook 心跳完成"
