@@ -379,12 +379,6 @@
                 <h1>🦧 小猩看板</h1>
                 <select class="date-selector" id="date-selector" onchange="loadDate(this.value)">
                     <option value="today">今天</option>
-                    <option value="2026-02-06">2月6日</option>
-                    <option value="2026-02-05">2月5日</option>
-                    <option value="2026-02-04">2月4日</option>
-                    <option value="2026-02-03">2月3日</option>
-                    <option value="2026-02-02">2月2日</option>
-                    <option value="2026-02-01">2月1日</option>
                 </select>
             </div>
             <div class="header-info">
@@ -427,10 +421,45 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             initNavDots();
+            loadDates();  // 动态加载日期列表
             loadData();
             updateTime();
             setInterval(updateTime, 1000);
         });
+
+        // 动态加载日期选择器
+        async function loadDates() {
+            try {
+                const response = await fetch('data/daily/index.json');
+                const index = await response.json();
+                
+                const selector = document.getElementById('date-selector');
+                const today = new Date().toISOString().split('T')[0];
+                
+                // 清空现有选项（保留第一个"今天"选项）
+                selector.innerHTML = '<option value="today">今天</option>';
+                
+                // 从index.json获取日期列表（倒序，最新的在前）
+                const dates = index.files || [];
+                for (const file of dates.reverse()) {
+                    const dateStr = file.replace('.json', '');
+                    const dateObj = new Date(dateStr);
+                    const month = dateObj.getMonth() + 1;
+                    const day = dateObj.getDate();
+                    const option = document.createElement('option');
+                    option.value = dateStr;
+                    option.textContent = `${month}月${day}日`;
+                    selector.appendChild(option);
+                    
+                    // 如果是今天的日期，选中它
+                    if (dateStr === today) {
+                        option.selected = true;
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to load dates:', error);
+            }
+        }
         
         // Navigation dots
         function initNavDots() {
