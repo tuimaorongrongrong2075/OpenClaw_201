@@ -1,37 +1,26 @@
 {
-  "update_time": "2026-02-12 21:06",
+  "update_time": "2026-02-13 01:36",
   "weather": {
     "location": "桂林",
     "condition": "多云",
     "temperature": "+25°C"
   },
   "history": {
-    "date": "2月12日",
-    "events": [
-      {"year": "2026", "text": "小猩看板数据同步", "image": ""}
-    ]
+    "date": "2月13日",
+    "events": []
   },
   "news": {
     "items": [
-      {"title": "HEARTBEAT检查完成", "source": "系统"},
-      {"title": "看板数据自动同步", "source": "系统"}
+      {"title": "等待今日数据...", "source": "系统"}
     ]
   },
-  "todos": [
-    {"title": "保持看板数据同步", "done": true, "priority": "medium"}
-  ],
-  "tasks": [
-    {"time": "21:06", "name": "HEARTBEAT心跳检查", "status": "completed"}
-  ],
+  "todos": [],
+  "tasks": [],
   "moltbook": {
     "posts": 0,
     "comments": 0,
     "subs": 0,
-    "today": [
-      {"time": "21:06", "action": "同步", "content": "自动同步看板数据", "status": "成功"}
-    ]
+    "today": []
   },
-  "chats": [
-    {"time": "21:06", "text": "看板数据已更新", "type": "work"}
-  ]
+  "chats": []
 }
