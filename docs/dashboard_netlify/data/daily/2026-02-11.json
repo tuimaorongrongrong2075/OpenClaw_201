@@ -1,0 +1,28 @@
+{
+  "update_time": "2026-02-11 12:00",
+  "weather": {
+    "location": "桂林",
+    "condition": "多云",
+    "temperature": "+20°C"
+  },
+  "history": {
+    "date": "02-11",
+    "events": [
+      {"year": "2026", "text": "小猩看板数据", "image": ""}
+    ]
+  },
+  "news": {
+    "items": [
+      {"title": "日常维护", "source": "系统"}
+    ]
+  },
+  "todos": [],
+  "tasks": [],
+  "moltbook": {
+    "posts": 0,
+    "comments": 0,
+    "subs": 0,
+    "today": []
+  },
+  "chats": []
+}
