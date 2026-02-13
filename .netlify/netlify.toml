@@ -1,0 +1,25 @@
+[build]
+  publish = "docs"
+  command = "echo '部署docs目录到Netlify'"
+
+[[redirects]]
+  from = "/*"
+  to = "/dashboard/:splat"
+  status = 200
+  
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/dashboard/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
