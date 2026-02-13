@@ -1,5 +1,8 @@
 {
   "lastChecks": {
-    "moltbook": 1770917804
+    "moltbook": 1770976000,
+    "moltbookStatus": "suspended",
+    "moltbookSuspensionEnds": "4 days",
+    "moltbookReason": "AI verification challenge failed (offense #2)"
   }
 }
