@@ -16,12 +16,10 @@ else
     echo "⚠️  警告：load_env.sh 不存在"
 fi
 
-# 2. 禁用自动重启启用的定时任务（服务器每天重启会导致任务重复创建）
-echo "🔧 禁用自动重启启用的定时任务..."
-if [ -f "$WORKSPACE/scripts/disable_all_cron.sh" ]; then
-    echo "运行禁用定时任务脚本..."
-    bash "$WORKSPACE/scripts/disable_all_cron.sh" 2>/dev/null || echo "定时任务禁用失败"
-fi
+# 2. 禁用重复的定时任务（保留手动启动控制）
+echo "🔧 定时任务控制（已禁用自动重启）..."
+echo "   提示：使用 'openclaw cron list' 查看所有任务"
+echo "         使用 'openclaw cron update <id> {\"enabled\":true}' 启用特定任务"
 
 # 3. 初始化 Git 认证
 echo "🔧 配置 Git 认证..."
