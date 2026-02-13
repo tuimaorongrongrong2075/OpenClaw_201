@@ -1,6 +1,0 @@
-[build]
-  publish = "."
-  command = "echo 'No build required - static site'"
-
-[dev]
-  command = "echo 'Open index.html in browser'"
