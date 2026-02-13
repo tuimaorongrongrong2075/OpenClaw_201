@@ -1,0 +1,2 @@
+# 默认重定向到dashboard
+/ /dashboard/ 302
