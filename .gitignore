@@ -1,1 +1,23 @@
+# 环境变量和敏感信息
 .env
+.env.local
+*.env
+.env.*
+
+# 敏感信息文件
+*_secret*
+*_password*
+*_token*
+*_key*
+
+# 日志文件（可选）
+*.log
+memory/gmail_*.log
+memory/gmail_state.json
+memory/last_unread_count.txt
+
+# 临时文件
+*.tmp
+*.temp
+.DS_Store
+

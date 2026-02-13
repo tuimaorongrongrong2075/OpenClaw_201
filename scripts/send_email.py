@@ -10,8 +10,9 @@ from email.utils import formataddr
 
 def send_email():
     # 邮件配置
-    sender_email = "tuimaorongrong@gmail.com"
-    sender_password = "compnxsxaqxszcyc"  # 应用密码
+    import os
+    sender_email = os.environ.get("GMAIL_USER", "tuimaorongrong@gmail.com")
+    sender_password = os.environ.get("GMAIL_APP_PASSWORD", "")
     sender_name = "小猩"
     recipient_email = "7391117@qq.com"
     recipient_name = ""
