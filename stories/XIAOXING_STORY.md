@@ -190,7 +190,7 @@
 - 配置token认证，实现自动推送
 
 #### 2. **Gmail自动化检查** ✅
-- 关联Gmail账户：tuimaorongrong@gmail.com
+- 关联Gmail账户：[邮箱已加密]
 - 创建Python脚本自动检查未读邮件
 - 实现飞书推送新邮件通知
 - 配置每小时自动检查
